@@ -35,6 +35,7 @@ const Dashboard = () => {
                                 <>
                                     <li><NavLink to="/dashboard/home">User Home</NavLink></li>
                                     <li><NavLink to="/dashboard/reservation">Reservation</NavLink></li>
+                                    <li><NavLink to="/dashboard/payment">Payment</NavLink></li>
                                     <li><NavLink to="/dashboard/history">Payment History</NavLink></li>
                                     <li><NavLink to="/dashboard/mycart">My Cart [+{cart?.length || 0}]</NavLink></li>
                                 </>

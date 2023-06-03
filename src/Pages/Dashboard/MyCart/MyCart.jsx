@@ -4,6 +4,7 @@ import useCart from '../../../Hooks/useCart';
 import SectionTitle from '../../../Components/SectionTitle/SectionTitle';
 import Swal from 'sweetalert2';
 import './MyCart.css';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
 
@@ -51,7 +52,7 @@ const MyCart = () => {
                 <div className="flex justify-between font-bold uppercase mb-5">
                     <h1>Total Booking: ${cart.length}</h1>
                     <h1>Total Price: ${totalPrice}</h1>
-                    <button className="btn btn-warning btn-sm">Pay</button>
+                    <Link to={'/dashboard/payment'}><button className="btn btn-warning btn-sm">Pay</button></Link>                    
                 </div>
                 <div className=''>
                     <div className=" w-full">
