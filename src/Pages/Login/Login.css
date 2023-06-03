@@ -1,0 +1,23 @@
+.loginContainer {
+    /* margin: 130px 0px; */
+}
+
+.heroSection {
+    width: 50%;
+}
+
+.hero-content {
+    gap: 42px;
+}
+
+.loginTitle {
+    color: var(--link);
+    font-size: xx-large;
+    font-weight: 700;
+}
+
+.submitBtn {
+    background: rgba(209, 160, 84, 0.7);
+    border-radius: 8px;
+    padding: 24px 0px;
+}

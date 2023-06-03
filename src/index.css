@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dropdown-end .dropdown-content {
+    color: black !important;
+}
+
+.rawer-side a {
+    background-color: transparent;
+}
+
+.menu :where(li:not(.menu-title):not(:empty)) > :where(:not(ul).active), .menu :where(li:not(.menu-title):not(:empty)) > :where(*:not(ul):active) {
+    background-color: transparent;
+}

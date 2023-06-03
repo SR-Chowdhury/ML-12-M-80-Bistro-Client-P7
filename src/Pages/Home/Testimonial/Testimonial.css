@@ -1,0 +1,39 @@
+.testimonial-section {
+    margin: 90px 0px;
+}
+
+.reviewSection {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.review-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 60px;
+}
+
+.review-info {
+    text-align: center;
+    color: #444444;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 35px;
+}
+
+.review-author {
+    text-align: center;
+    color: #CD9003;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 39px;
+}
+
+.quoteIcon {
+    font-size: 50px;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}

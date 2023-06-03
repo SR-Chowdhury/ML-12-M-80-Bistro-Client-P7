@@ -1,0 +1,29 @@
+.menuContainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.menuImg {
+    width: 118px;
+    height: 104px;
+}
+
+.menuImg img {
+    border-radius: 0px 200px 200px 200px;
+}
+
+.menuTitle {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    color: #151515;
+}
+
+.menuInfo {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 26px;
+    color: #737373;
+}

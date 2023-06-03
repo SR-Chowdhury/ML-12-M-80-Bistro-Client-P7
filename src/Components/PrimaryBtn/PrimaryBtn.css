@@ -1,0 +1,17 @@
+.primaryBtn {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    padding: 20px 30px;
+    text-align: center;
+    text-transform: uppercase;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    transition: 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.primaryBtn:hover {
+    background-color: #1F2937;
+    color: white !important;
+}

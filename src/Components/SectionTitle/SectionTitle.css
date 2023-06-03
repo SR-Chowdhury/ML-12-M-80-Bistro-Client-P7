@@ -1,0 +1,25 @@
+.SectionTitle {
+    width: 30%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subHeading {
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #D99904;
+    margin-bottom: 16px;
+}
+
+.sectionHeading {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: #151515;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    padding: 15px 0px;
+}
