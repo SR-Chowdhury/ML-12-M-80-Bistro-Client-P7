@@ -5,6 +5,7 @@
 * 80-3 Create Stripe account and use published key
 * 80-4 Use Test card and display card error
 * 80-5 Server side payment intent api to get client secret from stripe
+* 80-6 Get price for payment intent and understand array reduce funtion
 
 
 ## react-boilerplate-2
