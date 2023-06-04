@@ -4,6 +4,7 @@
 * 80-2 Install stripe for react and create card element
 * 80-3 Create Stripe account and use published key
 * 80-4 Use Test card and display card error
+* 80-5 Server side payment intent api to get client secret from stripe
 
 
 ## react-boilerplate-2
