@@ -10,5 +10,7 @@
  * 6. install stripe (npm i --save stripe)
  * 7. Create a payment intent api with payment method types: ['card'], currency : 'usd', amount: price * 100
  * 8. call payment intent api to get client secret and store it in a state
- * 9. use confirmCardPayment api with client secret card info * 
+ * 9. use confirmCardPayment api with client secret card info 
+ * 10. display confirm card error & success
+ * 11. do this after payment -->  
  */

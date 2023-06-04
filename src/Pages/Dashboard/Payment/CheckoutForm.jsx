@@ -10,6 +10,8 @@ const CheckoutForm = ({ price }) => {
     const elements = useElements();
     const [cardError, setCardError] = useState('');
     const [clientSecret, setClientSecret] = useState('');
+    const [processing, setProcessing] = useState(false);
+    const [transactionId, setTransactionId] = useState('');
     const [axiosSecure] = useAxiosSecure();
     const {user} = useAuth();
 
@@ -37,10 +39,11 @@ const CheckoutForm = ({ price }) => {
         if (error) {
             setCardError(error.message);
         } else {
-            console.log('payment method', paymentMethod);
+            // console.log('payment method', paymentMethod);
             setCardError('');
         }
 
+        setProcessing(true);
         // Confirm Card Payment
         const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
@@ -55,7 +58,14 @@ const CheckoutForm = ({ price }) => {
         if (confirmError) {
             console.log(confirmError);
         }
-        console.log(paymentIntent);
+
+        setProcessing(false);
+
+        console.log('paymentIntent', paymentIntent);
+        if (paymentIntent.status === "succeeded") {
+            setTransactionId(paymentIntent.id);
+            // TOTO NEXT STEPS
+        }
     }
 
     return (
@@ -77,12 +87,15 @@ const CheckoutForm = ({ price }) => {
                         },
                     }}
                 />
-                <button className='btn btn-warning btn-sm mt-5' type="submit" disabled={!stripe || !clientSecret}>
+                <button className='btn btn-warning btn-sm mt-5' type="submit" disabled={!stripe || !clientSecret || processing}>
                     Pay
                 </button>
             </form>
             {
                 cardError && <p className='text-red-800 mt-3'>{cardError}</p>
+            }
+            {
+                transactionId && <p className='text-green-800 mt-3'>Transaction completed with Transaction ID: {transactionId}</p>
             }
         </>
     );

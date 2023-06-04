@@ -7,6 +7,7 @@
 * 80-5 Server side payment intent api to get client secret from stripe
 * 80-6 Get price for payment intent and understand array reduce funtion
 * 80-7 Use confirm card payment to process payment
+* 80-8 Display payment error and success message
 
 
 ## react-boilerplate-2
