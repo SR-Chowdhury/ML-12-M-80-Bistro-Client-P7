@@ -12,7 +12,7 @@ const Payment = () => {
         <div className='w-full'>
             <ReactHelmet title={'Payment'} />
             <SectionTitle subHeading={'spend money'} Heading={'Payment'} />
-            <div className=''>
+            <div className='w-2/3 mx-auto'>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm/>
                 </Elements>

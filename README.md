@@ -3,6 +3,7 @@
 * 80-1 Module overview and create payment route
 * 80-2 Install stripe for react and create card element
 * 80-3 Create Stripe account and use published key
+* 80-4 Use Test card and display card error
 
 
 ## react-boilerplate-2
