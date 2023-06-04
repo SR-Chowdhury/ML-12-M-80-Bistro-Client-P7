@@ -9,6 +9,7 @@
 * 80-7 Use confirm card payment to process payment
 * 80-8 Display payment error and success message
 * 80-9 Create payment api and send payment data into server
+* 80-10 Save payment info to the server
 
 
 ## react-boilerplate-2

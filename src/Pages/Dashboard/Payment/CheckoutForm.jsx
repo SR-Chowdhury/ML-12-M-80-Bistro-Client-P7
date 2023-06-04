@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
 import Swal from 'sweetalert2';
+import './CheckoutForm.css';
 
 const CheckoutForm = ({ cart, price }) => {
 
@@ -14,14 +15,16 @@ const CheckoutForm = ({ cart, price }) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [axiosSecure] = useAxiosSecure();
-    const {user} = useAuth();
+    const { user } = useAuth();
 
     useEffect(() => {
-        axiosSecure.post('/create-payment-intent', { price })
-            .then(res => {
-                console.log(res.data.clientSecret);
-                setClientSecret(res.data.clientSecret);
-            })
+        if (price > 0) {
+            axiosSecure.post('/create-payment-intent', { price })
+                .then(res => {
+                    console.log(res.data.clientSecret);
+                    setClientSecret(res.data.clientSecret);
+                })
+        }
     }, []);
 
     const handleSubmit = async (event) => {
@@ -46,7 +49,7 @@ const CheckoutForm = ({ cart, price }) => {
 
         setProcessing(true);
         // Confirm Card Payment
-        const {paymentIntent, error:confirmError} = await stripe.confirmCardPayment(clientSecret, {
+        const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: card,
                 billing_details: {
@@ -62,33 +65,37 @@ const CheckoutForm = ({ cart, price }) => {
 
         setProcessing(false);
 
-        console.log('paymentIntent', paymentIntent);
+        // console.log('paymentIntent', paymentIntent);
         if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id);
             // save payment order into server
             const payment = {
-                transactionId: paymentIntent.id, 
+                date: new Date(),
+                transactionId: paymentIntent.id,
                 email: user?.email,
                 price,
                 quantity: cart.length,
-                itemId: cart.map(item => item._id),
-                itemName: cart.map(item => item.name)
+                cartItems: cart.map(item => item._id),
+                menuItems: cart.map(item => item.itemId),
+                itemName: cart.map(item => item.name),
+                status: 'service pending'
             };
             axiosSecure.post('/payments', payment)
-            .then(res => {
-                console.log(res.data);
-                if(res.data.insertedId) {
-                    Swal.fire({
-                        title: 'Successfully inserted into DB',
-                        showClass: {
-                            popup: 'animate__animated animate__fadeInDown'
-                        },
-                        hideClass: {
-                            popup: 'animate__animated animate__fadeOutUp'
-                        }
-                    }) 
-                }
-            })
+                .then(res => {
+                    console.log(res.data);
+                    if (res.data.insertResult.insertedId) {
+                        
+                        Swal.fire({
+                            title: 'Payment History inserted into DB',
+                            showClass: {
+                                popup: 'animate__animated animate__fadeInDown'
+                            },
+                            hideClass: {
+                                popup: 'animate__animated animate__fadeOutUp'
+                            }
+                        })
+                    }
+                })
 
         }
     }
