@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
+import Swal from 'sweetalert2';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ cart, price }) => {
 
     const stripe = useStripe();
     const elements = useElements();
@@ -64,7 +65,31 @@ const CheckoutForm = ({ price }) => {
         console.log('paymentIntent', paymentIntent);
         if (paymentIntent.status === "succeeded") {
             setTransactionId(paymentIntent.id);
-            // TOTO NEXT STEPS
+            // save payment order into server
+            const payment = {
+                transactionId: paymentIntent.id, 
+                email: user?.email,
+                price,
+                quantity: cart.length,
+                itemId: cart.map(item => item._id),
+                itemName: cart.map(item => item.name)
+            };
+            axiosSecure.post('/payments', payment)
+            .then(res => {
+                console.log(res.data);
+                if(res.data.insertedId) {
+                    Swal.fire({
+                        title: 'Successfully inserted into DB',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }) 
+                }
+            })
+
         }
     }
 

@@ -8,6 +8,7 @@
 * 80-6 Get price for payment intent and understand array reduce funtion
 * 80-7 Use confirm card payment to process payment
 * 80-8 Display payment error and success message
+* 80-9 Create payment api and send payment data into server
 
 
 ## react-boilerplate-2
